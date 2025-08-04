@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UWg72h/kqMpvPLPx6SnvnyM0LvROuMrs54X7UB7aD98=",
+  "Hash": "+qenVm63/DS7AK0f+WXNHmb1ejeR22ZXAJI/EDCxUZ4=",
   "Source": "SelfServicePortalWithIdentity",
   "BasePath": "_content/SelfServicePortalWithIdentity",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/brentjon/projects/SelfServicePortalWithIdentity/wwwroot/images/selfServicePortalSmall.png",
+      "SourceId": "SelfServicePortalWithIdentity",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/brentjon/projects/SelfServicePortalWithIdentity/wwwroot/",
+      "BasePath": "_content/SelfServicePortalWithIdentity",
+      "RelativePath": "images/selfServicePortalSmall.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/selfServicePortalSmall.png"
     },
     {
       "Identity": "/home/brentjon/projects/SelfServicePortalWithIdentity/wwwroot/js/site.js",

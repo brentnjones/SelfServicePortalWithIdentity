@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/brentjon/projects/SelfServicePortalWithIdentity/wwwroot/images/selfServicePortalSmall.png",
+      "PackagePath": "staticwebassets/images/selfServicePortalSmall.png"
+    },
+    {
       "Id": "/home/brentjon/projects/SelfServicePortalWithIdentity/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

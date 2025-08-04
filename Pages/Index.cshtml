@@ -1,10 +1,250 @@
 ﻿@page
+@using SelfServicePortalWithIdentity.Pages
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Dashboard";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Dashboard Content -->
+<div class="container">
+    
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <h1 class="display-5 mb-3">Dashboard</h1>
+                <p class="lead text-muted">Manage your OpenShift virtual machines and track your requests.</p>
+            }            
+        </div>
+    </div>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <!-- Quick Stats Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-server fa-2x mb-2"></i>
+                        <h4>0</h4>
+                        <p class="mb-0">Active VMs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-clock fa-2x mb-2"></i>
+                        <h4>0</h4>
+                        <p class="mb-0">Pending Requests</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-2x mb-2"></i>
+                        <h4>0</h4>
+                        <p class="mb-0">Approved</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <i class="fas fa-times-circle fa-2x mb-2"></i>
+                        <h4>0</h4>
+                        <p class="mb-0">Rejected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current VMs Section -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-server me-2"></i>Current Virtual Machines</h5>
+                        <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#requestVmModal">
+                            <i class="fas fa-plus me-1"></i>Request New VM
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>VM Name</th>
+                                        <th>Status</th>
+                                        <th>CPU</th>
+                                        <th>Memory</th>
+                                        <th>Storage</th>
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted py-4">
+                                            <i class="fas fa-server fa-3x mb-3 d-block text-muted" style="opacity: 0.3;"></i>
+                                            No virtual machines found. Click "Request New VM" to get started.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VM Requests Section -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>VM Requests</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Request ID</th>
+                                        <th>VM Name</th>
+                                        <th>Configuration</th>
+                                        <th>Requested Date</th>
+                                        <th>Status</th>
+                                        <th>Manager Approval</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted py-4">
+                                            <i class="fas fa-clipboard-list fa-3x mb-3 d-block text-muted" style="opacity: 0.3;"></i>
+                                            No VM requests found.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Call to Action for Non-Authenticated Users -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="bg-light p-5 rounded text-center">
+                    <h3 class="mb-3">Ready to Get Started?</h3>
+                    <p class="lead mb-4">Sign up now to access your VM dashboard and manage your OpenShift resources</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a class="btn btn-primary btn-lg me-md-2" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+                        <a class="btn btn-outline-primary btn-lg" asp-area="Identity" asp-page="/Account/Login">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section for Non-Authenticated Users -->
+        <div class="row mb-5">
+            <div class="col-lg-12 text-center">
+                <h2 class="display-5 mb-3">OpenShift Self Service Portal - What You Can Do</h2>
+                <p class="lead text-muted mb-5">Our Self Service Portal empowers you to manage your OpenShift virtual machines efficiently</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- VM Creation -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-plus-circle fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Create VMs</h5>
+                        <p class="card-text">Quickly deploy new virtual machines with your preferred configurations and specifications.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Migration -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-exchange-alt fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Live Migration</h5>
+                        <p class="card-text">Seamlessly migrate your running VMs between hosts without downtime or service interruption.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restart & Control -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-redo fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Restart & Control</h5>
+                        <p class="card-text">Manage VM lifecycle with restart, shutdown, and power control operations at your fingertips.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Monitoring -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Resource Monitoring</h5>
+                        <p class="card-text">Monitor CPU, memory, and storage usage to optimize performance and resource allocation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Requests -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-life-ring fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Request Support</h5>
+                        <p class="card-text">Submit support tickets and get assistance from our technical team when you need help.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Management -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-cogs fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Configuration</h5>
+                        <p class="card-text">Customize VM settings, network configurations, and security policies to meet your requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
+
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}

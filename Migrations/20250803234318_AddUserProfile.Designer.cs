@@ -9,11 +9,11 @@ using SelfServicePortalWithIdentity.Data;
 
 #nullable disable
 
-namespace SelfServicePortalWithIdentity.Data.Migrations
+namespace SelfServicePortalWithIdentity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250803223435_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250803234318_AddUserProfile")]
+    partial class AddUserProfile
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -225,6 +225,41 @@ namespace SelfServicePortalWithIdentity.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("SelfServicePortalWithIdentity.Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ManagerFirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ManagerLastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpenShiftProject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserProfiles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

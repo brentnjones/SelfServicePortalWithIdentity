@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SelfServicePortalWithIdentity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11d938e48055abdb78a015b27a685d2d00e527a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("SelfServicePortalWithIdentity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SelfServicePortalWithIdentity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

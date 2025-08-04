@@ -160,6 +160,7 @@
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/SelfServicePortalWithIdentity.MvcApplicationPartsAssemblyInfo.cache
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/SelfServicePortalWithIdentity.RazorAssemblyInfo.cache
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/SelfServicePortalWithIdentity.RazorAssemblyInfo.cs
+/home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/SelfServicePortalWithIdentity.sourcelink.json
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/staticwebassets.build.json
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/staticwebassets.development.json
 /home/brentjon/projects/SelfServicePortalWithIdentity/obj/Debug/net8.0/staticwebassets/msbuild.SelfServicePortalWithIdentity.Microsoft.AspNetCore.StaticWebAssets.props
